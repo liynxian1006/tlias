@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mapper.ClazzMapper">
+
+    <resultMap id="ClazzResultMap" type="com.itheima.pojo.Clazz">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="room" property="room"/>
+        <result column="begin_date" property="beginDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="master_id" property="masterId"/>
+        <result column="master_name" property="masterName"/>
+        <result column="subject" property="subject"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        c.id, c.name, c.room, c.begin_date, c.end_date, c.master_id,
+        e.name as master_name, c.subject, c.status, c.create_time, c.update_time
+    </sql>
+
+    <select id="selectPage" resultMap="ClazzResultMap">
+        select <include refid="Base_Column_List"/>
+        from clazz c left join emp e on c.master_id = e.id
+        <where>
+            <if test="name != null and name != ''">
+                c.name like concat('%', #{name}, '%')
+            </if>
+            <if test="begin != null and end != null">
+                and c.end_date between #{begin} and #{end}
+            </if>
+        </where>
+        order by c.id desc
+        limit #{offset}, #{pageSize}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        select count(*) from clazz c
+        <where>
+            <if test="name != null and name != ''">
+                c.name like concat('%', #{name}, '%')
+            </if>
+            <if test="begin != null and end != null">
+                and c.end_date between #{begin} and #{end}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteById">
+        delete from clazz where id = #{id}
+    </delete>
+
+    <select id="getById" resultMap="ClazzResultMap">
+        select <include refid="Base_Column_List"/>
+        from clazz c left join emp e on c.master_id = e.id
+        where c.id = #{id}
+    </select>
+
+    <update id="update">
+        update clazz
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="room != null and room != ''">room = #{room},</if>
+            <if test="beginDate != null">begin_date = #{beginDate},</if>
+            <if test="endDate != null">end_date = #{endDate},</if>
+            <if test="masterId != null">master_id = #{masterId},</if>
+            <if test="subject != null">subject = #{subject},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            update_time = #{updateTime}
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

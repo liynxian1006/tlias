@@ -1,0 +1,19 @@
+# ============ 构建产物 ============
+tlias/target/
+tlias-web/node_modules/
+tlias-web/dist/
+*.log
+backend.log
+
+# ============ 课程资料（非项目源码） ============
+*.pdf
+extracted_*.txt
+nginx-1.22.0-web/
+
+# ============ IDE ============
+.idea/
+.vscode/
+*.iml
+
+# ============ 本地工作区记忆（勿提交） ============
+.workbuddy/

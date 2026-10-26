@@ -1,0 +1,2 @@
+{"ts":"2026-10-26 10:28:11.641","cmd":"create","ms":314,"input":{"file":"C:\\Users\\34118\\Desktop\\项目\\Tlias项目答辩\\Tlias项目答辩.pptx"},"output":{"ok":true,"file_id":"AF62D1C5-C426-4EF0-8130-986C2AAF9D8A","file_path":"C:\\Users\\34118\\Desktop\\项目\\Tlias项目答辩\\Tlias项目答辩.pptx","latest_version":0}}
+{"ts":"2026-10-26 10:28:48.629","cmd":"lint","ms":1020,"input":{"file":"C:\\Users\\34118\\Desktop\\项目\\Tlias项目答辩\\Tlias项目答辩.pptx","pageIndex":0,"visual":true,"dslLen":3365},"output":{"ok":false,"error":"Error: Failed to load native binding"}}

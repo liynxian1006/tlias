@@ -40,6 +40,7 @@
         <el-table-column label="性别" width="70">
           <template #default="{ row }">{{ genderMap[row.gender] }}</template>
         </el-table-column>
+        <el-table-column prop="phone" label="手机号" width="120" />
         <el-table-column label="头像" width="80">
           <template #default="{ row }">
             <el-avatar v-if="row.image" :size="40" :src="resolveImg(row.image)" />
@@ -81,6 +82,9 @@
             <el-radio :value="1">男</el-radio>
             <el-radio :value="2">女</el-radio>
           </el-radio-group>
+        </el-form-item>
+        <el-form-item label="手机号">
+          <el-input v-model="form.phone" placeholder="请输入手机号" maxlength="11" />
         </el-form-item>
         <el-form-item label="头像">
           <el-upload
@@ -145,7 +149,7 @@ const dialogVisible = ref(false)
 const search = reactive({ name: '', gender: '', range: [], page: 1, pageSize: 10 })
 
 const emptyForm = () => ({
-  id: null, username: '', name: '', gender: 1, image: '', job: '', deptId: '', salary: 0, entryDate: '', exprList: []
+  id: null, username: '', name: '', gender: 1, phone: '', image: '', job: '', deptId: '', salary: 0, entryDate: '', exprList: []
 })
 const form = reactive(emptyForm())
 

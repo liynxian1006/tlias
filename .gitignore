@@ -17,3 +17,8 @@ nginx-1.22.0-web/
 
 # ============ 本地工作区记忆（勿提交） ============
 .workbuddy/
+
+# ============ PPT 构建中间产物（勿提交） ============
+Tlias项目答辩/preview/
+Tlias项目答辩/preview_ref/
+Tlias项目答辩/slides/

@@ -1,6 +1,7 @@
 package com.itheima.controller;
 
 import com.itheima.mapper.ReportMapper;
+import com.itheima.pojo.JobOption;
 import com.itheima.pojo.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,10 +63,7 @@ public class ReportController {
             jobList.add(entry.getValue());
             dataList.add(rawMap.getOrDefault(entry.getKey(), 0));
         }
-        Map<String, Object> result = new LinkedHashMap<>();
-        result.put("jobList", jobList);
-        result.put("dataList", dataList);
-        return Result.success(result);
+        return Result.success(new JobOption(jobList, dataList));
     }
 
     /**
@@ -89,9 +87,6 @@ public class ReportController {
             Object cnt = m.get("cnt");
             dataList.add(cnt instanceof Number ? ((Number) cnt).intValue() : 0);
         }
-        Map<String, Object> result = new LinkedHashMap<>();
-        result.put("clazzList", clazzList);
-        result.put("dataList", dataList);
-        return Result.success(result);
+        return Result.success(new JobOption(clazzList, dataList));
     }
 }

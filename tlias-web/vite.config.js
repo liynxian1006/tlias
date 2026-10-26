@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       // 开发环境：将 /api 代理到后端 Spring Boot（对应课程中 nginx 反向代理 /api）
       '/api': {
-        target: 'http://localhost:9090',
+        target: 'http://localhost:9099',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }

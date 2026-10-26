@@ -60,12 +60,8 @@ public class EmpServiceImpl implements EmpService {
 
     @Override
     public Emp getById(Integer id) {
-        Emp emp = empMapper.getById(id);
-        if (emp != null) {
-            List<EmpExpr> exprList = empMapper.selectExprByEmpId(id);
-            emp.setExprList(exprList);
-        }
-        return emp;
+        // 一条 left join 语句，resultMap 的 collection 直接把工作经历封装进 exprList
+        return empMapper.getById(id);
     }
 
     @Override

@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS emp (
     password    VARCHAR(20) DEFAULT '123456' COMMENT '密码',
     name        VARCHAR(10) NOT NULL COMMENT '姓名',
     gender      TINYINT UNSIGNED NOT NULL COMMENT '性别, 1 男, 2 女',
+    phone       VARCHAR(11) DEFAULT NULL COMMENT '手机号',
     image       VARCHAR(255) DEFAULT NULL COMMENT '图像',
     job         TINYINT UNSIGNED DEFAULT NULL COMMENT '职位, 1 班主任,2 讲师,3 学工主管,4 教研主管,5 咨询师',
     salary      INT UNSIGNED DEFAULT NULL COMMENT '薪资',
@@ -42,6 +43,7 @@ CREATE TABLE IF NOT EXISTS emp (
     dept_id     INT UNSIGNED DEFAULT NULL COMMENT '部门ID',
     create_time DATETIME DEFAULT NULL COMMENT '创建时间',
     update_time DATETIME DEFAULT NULL COMMENT '修改时间',
+    UNIQUE KEY uk_emp_phone (phone),
     CONSTRAINT fk_emp_dept FOREIGN KEY (dept_id) REFERENCES dept (id)
 ) COMMENT = '员工表';
 

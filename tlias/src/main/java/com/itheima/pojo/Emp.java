@@ -17,6 +17,7 @@ public class Emp {
     private String password;
     private String name;
     private Integer gender;     // 1 男, 2 女
+    private String phone;       // 手机号（唯一约束，重复时触发统一异常处理）
     private String image;
     private Integer job;        // 1 班主任,2 讲师,3 学工主管,4 教研主管,5 咨询师
     private Integer salary;

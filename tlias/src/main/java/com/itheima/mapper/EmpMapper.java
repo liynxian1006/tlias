@@ -18,9 +18,9 @@ public interface EmpMapper {
                @Param("begin") LocalDate begin, @Param("end") LocalDate end);
 
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into emp(username, password, name, gender, image, job, salary, entry_date, " +
+    @Insert("insert into emp(username, password, name, gender, phone, image, job, salary, entry_date, " +
             "dept_id, create_time, update_time) values(#{username}, #{password}, #{name}, #{gender}, " +
-            "#{image}, #{job}, #{salary}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
+            "#{phone}, #{image}, #{job}, #{salary}, #{entryDate}, #{deptId}, #{createTime}, #{updateTime})")
     void insert(Emp emp);
 
     void insertExprBatch(@Param("empId") Integer empId, @Param("list") List<EmpExpr> list);
